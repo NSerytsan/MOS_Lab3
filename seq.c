@@ -7,7 +7,7 @@ int main(int argc, char **argv)
     bench_args args;
     get_bench_args(&args, argc, argv);
 
-    array_t array = init_array(args.array_sz, 1);
+    auto array = init_array(args.array_sz, 1);
     if (array == NULL)
         sys_error("Error allocating array");
 
