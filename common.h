@@ -4,20 +4,21 @@
 #include <stdio.h>
 
 #define DEFAULT_CACHE_SZ 4096
-#define DEFAULT_ARRAY_SZ 1024
+#define DEFAULT_MEMORY_SZ 1024
 #define THREADS_NUM 2
 
 typedef struct bench_results
 {
     double start;
     double end;
+    size_t sum;
 
 } bench_results;
 
 typedef struct bench_args
 {
     size_t cache_sz;
-    size_t array_sz;
+    size_t memory_sz;
     size_t threads_num;
 
 } bench_args;

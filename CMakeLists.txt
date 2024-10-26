@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 3.21)
 project (MOS_Lab3 C)
 
-set (CMAKE_C_STANDARD C23)
+set (CMAKE_C_STANDARD 23)
 add_compile_options(-O0 -Wall -Werror -pedantic)
 
 link_libraries(pthread)
