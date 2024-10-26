@@ -7,28 +7,23 @@ int main(int argc, char **argv)
     bench_args args;
     get_bench_args(&args, argc, argv);
 
-    int *memory = malloc(args.memory_sz * sizeof(int));
-    if (memory == NULL)
-        sys_error("Error allocating memory");
-
-    for (size_t i = 0; i < args.memory_sz; i++)
-    {
-        memory[i] = 1;
-    }
+    array_t array = init_array(args.array_sz, 1);
+    if (array == NULL)
+        sys_error("Error allocating array");
 
     bench_results results;
     results.sum = 0;
     results.start = now_us();
 
-    for (size_t i = 0; i < args.memory_sz; i++)
+    for (size_t i = 0; i < args.array_sz; i++)
     {
-        results.sum += memory[i];
+        results.sum += array[i];
     }
 
     results.end = now_us();
     evaluate_benchmark(&results, &args, NULL);
 
-    free(memory);
+    free(array);
 
     return 0;
 }

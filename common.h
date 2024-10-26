@@ -4,8 +4,11 @@
 #include <stdio.h>
 
 #define DEFAULT_CACHE_SZ 4096
-#define DEFAULT_MEMORY_SZ 1024
+#define DEFAULT_ARRAY_SZ 1024
 #define THREADS_NUM 2
+
+typedef int array_element_t;
+typedef array_element_t *array_t;
 
 typedef struct bench_results
 {
@@ -18,7 +21,7 @@ typedef struct bench_results
 typedef struct bench_args
 {
     size_t cache_sz;
-    size_t memory_sz;
+    size_t array_sz;
     size_t threads_num;
 
 } bench_args;
@@ -30,5 +33,6 @@ void sys_error(const char *msg);
 double now_us();
 void evaluate_benchmark(bench_results *bench, bench_args *args, FILE *fp);
 
+array_t init_array(size_t array_sz, array_element_t default_value);
 
 #endif

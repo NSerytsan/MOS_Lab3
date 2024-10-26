@@ -2,6 +2,7 @@
 #include <time.h>
 #include <sys/time.h>
 #include <unistd.h>
+#include <stddef.h>
 
 #include "common.h"
 
@@ -12,7 +13,7 @@ void get_bench_args(bench_args *args, int argc, char **argv)
     int opt = 0;
 
     args->cache_sz = DEFAULT_CACHE_SZ;
-    args->memory_sz = DEFAULT_MEMORY_SZ;
+    args->array_sz = DEFAULT_ARRAY_SZ;
     args->threads_num = THREADS_NUM;
     while ((opt = getopt(argc, argv, "c:a:")) != -1)
     {
@@ -22,7 +23,7 @@ void get_bench_args(bench_args *args, int argc, char **argv)
             args->cache_sz = atoi(optarg);
             break;
         case 'a':
-            args->memory_sz = atoi(optarg);
+            args->array_sz = atoi(optarg);
             break;
         default:
             continue;
@@ -52,4 +53,17 @@ void evaluate_benchmark(bench_results *bench, bench_args *args, FILE *fp)
     const double latency = (bench->end - bench->start) / 1000;
     fprintf(fp, "Sum:           %ld\n", bench->sum);
     fprintf(fp, "Latency:       %.3f\tms\n", latency);
+}
+
+array_t init_array(size_t array_sz, array_element_t default_value)
+{
+    array_t array = malloc(array_sz * sizeof(array_element_t));
+    if (array == NULL)
+        return NULL;
+    for (size_t i = 0; i < array_sz; i++)
+    {
+        array[i] = default_value;
+    }
+
+    return array;
 }
