@@ -8,10 +8,10 @@ link_libraries(pthread)
 
 add_library(common STATIC common.c)
 
-add_executable(seq_access seq.c)
-add_executable(atomic_access atomic.c)
-add_executable(rand_access rand.c)
+add_executable(seq_mem_access seq_mem_access.c)
+add_executable(atomic_mem_access atomic_mem_access.c)
+add_executable(rand_mem_access rand_mem_access.c)
 
-target_link_libraries(seq_access common)
-target_link_libraries(rand_access common)
-target_link_libraries(atomic_access common)
+target_link_libraries(seq_mem_access common)
+target_link_libraries(rand_mem_access common)
+target_link_libraries(atomic_mem_access common)
