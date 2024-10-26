@@ -13,3 +13,4 @@ add_executable(atomic_access atomic.c)
 add_executable(rand_access rand.c)
 
 target_link_libraries(seq_access common)
+target_link_libraries(rand_access common)
