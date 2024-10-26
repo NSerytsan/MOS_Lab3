@@ -15,7 +15,6 @@ typedef struct bench_results
     double start;
     double end;
     size_t sum;
-
 } bench_results;
 
 typedef struct bench_args
@@ -23,8 +22,13 @@ typedef struct bench_args
     size_t cache_sz;
     size_t array_sz;
     size_t threads_num;
-
 } bench_args;
+
+typedef struct thread_args
+{
+    array_t array;
+    size_t array_sz;
+} thread_args;
 
 void get_bench_args(bench_args *args, int argc, char **argv);
 
