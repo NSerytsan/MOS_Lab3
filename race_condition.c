@@ -1,11 +1,10 @@
 #include <stdlib.h>
 #include <string.h>
-#include <stdatomic.h>
 #include <threads.h>
 
 #include "common.h"
 
-atomic_int sum = 0;
+int sum;
 
 int f_sum(void *arg)
 {
@@ -14,7 +13,7 @@ int f_sum(void *arg)
 
     for (size_t i = 0; i < thr_args->array_sz; i++)
     {
-        atomic_fetch_add_explicit(&sum, thr_args->array[i], memory_order_relaxed);
+        ++sum;
     }
 
     thr_args->results.end = now_us();
