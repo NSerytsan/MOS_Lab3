@@ -7,10 +7,6 @@
 #define DEFAULT_ARRAY_SZ 1000
 #define THREADS_NUM 2
 
-#ifndef VOLATILE 
-#define VOLATILE
-#endif
-
 typedef int array_element_t;
 typedef array_element_t *array_t;
 
@@ -42,6 +38,6 @@ void sys_error(const char *msg);
 double now_us();
 void evaluate_benchmark(bench_results *bench, bench_args *args, FILE *fp);
 
-VOLATILE array_t init_array(size_t array_sz, array_element_t default_value);
+array_t init_array(size_t array_sz, array_element_t default_value);
 
 #endif

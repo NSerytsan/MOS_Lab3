@@ -1,14 +1,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define VOLATILE volatile
 #include "common.h"
 int main(int argc, char **argv)
 {
     bench_args args;
     get_bench_args(&args, argc, argv);
 
-    volatile array_t array = init_array(args.array_sz, 1);
+    array_t array = init_array(args.array_sz, 1);
     if (array == NULL)
         sys_error("Error allocating array");
 
