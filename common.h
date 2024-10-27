@@ -28,6 +28,7 @@ typedef struct thread_args
 {
     array_t array;
     size_t array_sz;
+    bench_results results;
 } thread_args;
 
 void get_bench_args(bench_args *args, int argc, char **argv);
