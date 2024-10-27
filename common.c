@@ -12,15 +12,15 @@ void get_bench_args(bench_args *args, int argc, char **argv)
         return;
     int opt = 0;
 
-    args->cache_sz = DEFAULT_CACHE_SZ;
+    args->cache_line_sz = DEFAULT_CACHE_LINE_SZ;
     args->array_sz = DEFAULT_ARRAY_SZ;
     args->threads_num = THREADS_NUM;
-    while ((opt = getopt(argc, argv, "tc:a:")) != -1)
+    while ((opt = getopt(argc, argv, "c:a:")) != -1)
     {
         switch (opt)
         {
         case 'c':
-            args->cache_sz = atoi(optarg);
+            args->cache_line_sz = atoi(optarg);
             break;
         case 'a':
             args->array_sz = atoi(optarg);
