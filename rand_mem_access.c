@@ -2,6 +2,22 @@
 #include <string.h>
 
 #include "common.h"
+
+size_t *generate_indexes(size_t array_sz)
+{
+    size_t *indexes = malloc(array_sz * sizeof(size_t));
+    if (indexes == NULL)
+        return NULL;
+
+    memset(indexes, 0, array_sz * sizeof(size_t));
+    for (size_t i = 0; i < array_sz; i++)
+    {
+        indexes[i] = rand() % array_sz;
+    }
+
+    return indexes;
+}
+
 int main(int argc, char **argv)
 {
     bench_args args;
@@ -11,14 +27,17 @@ int main(int argc, char **argv)
     if (array == NULL)
         sys_error("Error allocating array");
 
+    size_t *random_indexes = generate_indexes(args.array_sz);
+    if (random_indexes == NULL)
+        sys_error("Error allocating indexes");
+
     bench_results results;
     results.sum = 0;
     results.start = now_us();
 
     for (size_t i = 0; i < args.array_sz; i++)
     {
-        const size_t ri = rand() % args.array_sz;
-        results.sum += array[ri];
+        results.sum += array[random_indexes[i]];
     }
 
     results.end = now_us();
