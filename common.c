@@ -58,9 +58,9 @@ void evaluate_benchmark(bench_results *bench, bench_args *args, FILE *fp)
     fprintf(fp, "Latency:       %.3f\tms\n", latency);
 }
 
-array_t init_array(size_t array_sz, array_element_t default_value)
+VOLATILE array_t init_array(size_t array_sz, array_element_t default_value)
 {
-    array_t array = malloc(array_sz * sizeof(array_element_t));
+    VOLATILE array_t array = malloc(array_sz * sizeof(array_element_t));
     if (array == NULL)
         return NULL;
     for (size_t i = 0; i < array_sz; i++)
