@@ -12,16 +12,17 @@ int main(int argc, char **argv)
         sys_error("Error allocating array");
 
     bench_results results;
-    results.sum = 0;
+    size_t sum = 0;
     results.start = now_us();
 
     
     for (size_t i = 0; i < args.array_sz; ++i)
     {
-        results.sum += array[i];
+        sum += array[i];
     }
 
     results.end = now_us();
+    results.sum = sum;
     evaluate_benchmark(&results, &args, NULL);
 
     free(array);

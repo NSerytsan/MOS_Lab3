@@ -3,7 +3,7 @@
 #include <threads.h>
 #include "common.h"
 
-int sum;
+volatile int sum;
 
 int f_sum(void *arg)
 {

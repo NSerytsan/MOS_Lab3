@@ -47,6 +47,10 @@ int main(int argc, char **argv)
         {
             sys_error("Error creating thread");
         }
+    }
+
+    for (size_t i = 0; i < args.threads_num; i++)
+    {
         if (thrd_join(threads[i], NULL) != thrd_success)
         {
             sys_error("Error joining thread");
